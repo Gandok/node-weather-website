@@ -6,6 +6,7 @@ const forecast = ({latitud, longitud}, callback) =>{
     const base = "http://api.weatherstack.com/current?access_key="
     const query = `&query=${latitud},${longitud}`
     const url = base + key + query
+    console.log(url)
 
     request({ url, json: true}, (error, {body}) => {
         if(error){
@@ -15,8 +16,9 @@ const forecast = ({latitud, longitud}, callback) =>{
         }else {
             const description= `${body.current.weather_descriptions[0]}. `
             const temperature = `It is currently ${body.current.temperature} degress out. `
-            const precip = `There is ${body.current.precip}% chance of rain`
-            callback(undefined, description + temperature + precip)
+            const precip = `There is ${body.current.precip}% chance of rain. `
+            const humidity = `The humidity is ${body.current.humidity}%`
+            callback(undefined, description + temperature + precip + humidity)
         }        
     })
 }
