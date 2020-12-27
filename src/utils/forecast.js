@@ -6,7 +6,7 @@ const forecast = ({latitud, longitud}, callback) =>{
     const base = "http://api.weatherstack.com/current?access_key="
     const query = `&query=${latitud},${longitud}`
     const url = base + key + query
-    console.log(url)
+    //console.log(url)
 
     request({ url, json: true}, (error, {body}) => {
         if(error){
